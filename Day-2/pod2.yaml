@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: home
+  labels:
+    run: home
+    service: webserver
+spec:
+  containers:
+  - name: home
+    image: nginx
+    resources: {}
+  - name: ubuntu
+    image: ubuntu
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
