@@ -7,10 +7,13 @@ metadata:
     service: webserver
 spec:
   containers:
-  - name: home
+  - name: nginx
     image: nginx
     resources: {}
-  - name: ubuntu
-    image: ubuntu
+  - name: alpine
+    image: alpine
+    args: 
+    - sleep 
+    - "100"
   dnsPolicy: ClusterFirst
   restartPolicy: Always
