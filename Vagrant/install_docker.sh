@@ -18,3 +18,7 @@ sudo systemctl enable docker
 sudo usermod -aG docker $USER
 ls -l /var/run/docker.sock
 sudo chmod 666 /var/run/docker.sock
+
+# Adicionar provisionamento para ajustar o resolv.conf
+sudo echo 'nameserver 192.168.100.254' > /etc/resolv.conf
+sudo echo 'search williamuller.io' >> /etc/resolv.conf
