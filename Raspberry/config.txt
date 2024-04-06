@@ -1,0 +1,3 @@
+program_usb_boot_mode=1
+over_voltage=6
+arm_freq=2000
