@@ -21,10 +21,8 @@ end
 
 
 
-#curl -sfL https://get.k3s.io | K3S_TOKEN=SECRET sh -s - server --cluster-init --node-ip=192.168.100.254
+#curl -sfL https://get.k3s.io | K3S_TOKEN=SECRET sh -s - server --cluster-init --node-ip=10.147.18.185
 #curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --flannel-backend=host-gw --tls-san=192.168.100.200 --bind-address=192.168.100.200 --advertise-address=192.168.100.200 --node-ip=192.168.100.200 --cluster-init" sh -s -
 #sudo cat /var/lib/rancher/k3s/server/node-token
-#curl -sfL https://get.k3s.io | K3S_TOKEN=SECRET sh -s - agent --server https://192.168.100.200:6443 --node-ip=192.168.100.201
-
-
+#curl -sfL https://get.k3s.io | K3S_TOKEN=SECRET sh -s - agent --server https://10.147.18.185:6443 --node-ip=10.147.18.2
 
