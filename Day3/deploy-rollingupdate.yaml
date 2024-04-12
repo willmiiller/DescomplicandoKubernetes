@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: nginx-deploy
 spec:
-  replicas: 10
+  replicas: 30
   selector:
     matchLabels:
       app: nginx
@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx
+        image: nginx:1.14.0
         resources:
           limits:
             memory: "128Mi"
