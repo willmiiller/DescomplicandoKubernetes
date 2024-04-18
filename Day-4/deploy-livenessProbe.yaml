@@ -21,5 +21,13 @@ spec:
           requests:
             memory: "64Mi"
             cpu: "100m"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
         ports:
         - containerPort: 80
