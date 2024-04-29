@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: giropops-set
+spec:
+  selector:
+    matchLabels:
+      app: giropops-set
+  serviceName: giropops-set
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: giropops-set
+    spec:
+      containers:
+      - name: giropops-set
+        image: nginx
+        ports:
+        - containerPort: 80
+          name: web
+        volumeMounts:
+        - name: giropops-data
+          mountPath: /usr/share/nginx/html
+  volumeClaimTemplates:
+  - metadata:
+      name: giropops-data
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: giropops-service
+  labels:
+    app: giropops-set
+spec:
+  selector:
+    app: giropops-set
+  ports:
+  - port: 80
+    name: http
+  clusterIP: None
