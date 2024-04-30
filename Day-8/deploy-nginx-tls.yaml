@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-nginx-tls
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-nginx-tls
+  template:
+    metadata:
+      labels:
+        app: app-nginx-tls
+    spec:
+      containers:
+      - name: app-nginx-tls
+        image: nginx
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        volumeMounts:
+        - name: nginx-config
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+        - name: nginx-tls
+          mountPath: /etc/nginx/tls
+      volumes:
+      - name: nginx-config
+        configMap:
+          name: nginx-config
+      - name: nginx-tls
+        secret:
+          secretName: williamuller.io
+          items:
+          - key: tls.crt
+            path: certificado.crt
+          - key: tls.key
+            path: chave-privada.key
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-nginx-tls
+spec:
+  selector:
+    app: app-nginx-tls
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  - name: https
+    protocol: TCP
+    port: 443
+    targetPort: 443
+
