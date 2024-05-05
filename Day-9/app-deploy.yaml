@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-giropops-senhas
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-giropops-senhas
+  template:
+    metadata:
+      labels:
+        app: app-giropops-senhas
+    spec:
+      containers:
+      - name: app-giropops-senhas
+        image: linuxtips/giropops-senhas:1.0
+        env:
+        - name: REDIS_HOST
+          value: redis
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-giropops-senhas
+spec:
+  selector:
+    app: app-giropops-senhas
+  ports:
+  - port: 5000
+    targetPort: 5000
+    name: tcp-app
+  type: ClusterIP
+
+
+
+
+

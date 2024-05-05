@@ -42,7 +42,7 @@ kind: Ingress
 metadata:
   name: nginx-ingress
 spec:
-  ingressClassName: haproxy
+  ingressClassName: nginx
   rules:
   - host: nginx.williamuller.io
     http:

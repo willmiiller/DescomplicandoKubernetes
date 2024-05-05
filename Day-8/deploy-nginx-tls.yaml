@@ -51,12 +51,37 @@ spec:
   selector:
     app: app-nginx-tls
   ports:
-  - name: http
-    protocol: TCP
-    port: 80
-    targetPort: 80
   - name: https
     protocol: TCP
     port: 443
     targetPort: 443
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 80
+
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-nginx-tls
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - "*.williamuller.io"
+    secretName: williamuller.io
+  rules:
+  - host: nginx.williamuller.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: app-nginx-tls
+            port:
+              number: 443
 
