@@ -1,4 +1,4 @@
-#1 - editar nginx ingress controller 
+#1 - editar nginx ingress-nginx-controller
 # adicionar em args:- --enable-ssl-passthrough
 
 
