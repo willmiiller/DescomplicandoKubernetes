@@ -25,7 +25,8 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - http:
+  - host: argocd.williamuller.io
+    http:
       paths:
       - pathType: Prefix
         path: /
