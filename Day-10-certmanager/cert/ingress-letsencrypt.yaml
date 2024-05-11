@@ -10,7 +10,7 @@ spec:
   tls:
   - hosts:
     - giropops-senhas.williamuller.io
-    secretName: giropops-senhas-letsencrypt-tls
+    secretName: giropops-senhas-tls
   rules:
   - host: giropops-senhas.williamuller.io
     http:
