@@ -7,12 +7,8 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
-  tls:
-  - hosts:
-    - giropops-senhas.williamuller.io
-    secretName: giropops-senhas-tls
   rules:
-  - host: giropops-senhas.williamuller.io
+  - host: giropops.containers.expert
     http:
       paths:
       - path: /
@@ -22,4 +18,8 @@ spec:
             name: service-giropops-senhas
             port:
               number: 5000
+  tls:
+  - hosts:
+    - giropops.containers.expert
+    secretName: giropops-senhas-tls
 
