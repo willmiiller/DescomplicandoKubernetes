@@ -2,7 +2,7 @@
 # Defina os servidores DNS desejados
 nameserver1="192.168.122.254"
 sudo dnf update -y
-yum install -y -q yum-utils
+sudo yum install -y -q yum-utils
 curl https://releases.rancher.com/install-docker/<version-number>.sh | sh
 sudo systemctl start docker
 sudo systemctl enable docker
