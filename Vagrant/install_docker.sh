@@ -2,8 +2,8 @@
 # Defina os servidores DNS desejados
 nameserver1="192.168.122.254"
 sudo dnf update -y
-sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
-sudo dnf install docker-ce docker-ce-cli containerd.io -y
+yum install -y -q yum-utils
+curl https://releases.rancher.com/install-docker/<version-number>.sh | sh
 sudo systemctl start docker
 sudo systemctl enable docker
 sudo usermod -aG docker $USER
