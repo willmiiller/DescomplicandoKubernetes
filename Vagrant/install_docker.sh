@@ -7,6 +7,7 @@ sudo dnf install docker-ce docker-ce-cli containerd.io -y
 sudo systemctl start docker
 sudo systemctl enable docker
 sudo usermod -aG docker $USER
+newgrp docker
 sudo chmod 777 /var/run/docker.sock
 
 sudo systemctl stop firewalld
