@@ -3,7 +3,7 @@
 nameserver1="192.168.122.254"
 sudo dnf update -y
 sudo yum install -y -q yum-utils
-curl https://releases.rancher.com/install-docker/<version-number>.sh | sh
+curl https://releases.rancher.com/install-docker/24.0.9.sh | sh
 sudo systemctl start docker
 sudo systemctl enable docker
 sudo usermod -aG docker $USER
