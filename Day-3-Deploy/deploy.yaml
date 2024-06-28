@@ -54,3 +54,6 @@ spec:
             name: nginx
             port:
               number: 80
+
+
+#kubernetes.io/os: linux
